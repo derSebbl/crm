@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Add User</h2>
+<div class="input-container">
+  <div>
+    <mat-form-field class="mr-16" appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input [(ngModel)]="user.firstName" matInput/>
+      <!--<mat-hint>Please enter your first name</mat-hint>-->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input [(ngModel)]="user.lastName"  matInput/>
+      <!--<mat-hint>Please enter your last name</mat-hint>-->
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Birth Date</mat-label>
+        <input [(ngModel)]="birthDate"  matInput [matDatepicker]="picker1"/>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <!--<mat-hint>Please enter your birth date</mat-hint>-->
+      </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Street + House No.</mat-label>
+        <input [(ngModel)]="user.street"  matInput/>
+        <!--<mat-hint>Please enter your Street + House No.</mat-hint>-->
+      </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="mr-16" appearance="outline">
+        <mat-label>Zip Code</mat-label>
+        <input [(ngModel)]="user.zipCode"  matInput/>
+        <!--<mat-hint>Please enter your Zip Code</mat-hint>-->
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input [(ngModel)]="user.city"  matInput/>
+        <!--<mat-hint>Please enter your City</mat-hint>-->
+      </mat-form-field>
+  </div>
+
+</div>
+<mat-dialog-actions>
+  <button mat-button>Cancel</button>
+  <button (click)="saveUser()" mat-button>Save</button>
+</mat-dialog-actions>
