@@ -1,5 +1,6 @@
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { FirestoreModule } from '@angular/fire/firestore';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    FirestoreModule,
     provideFirebaseApp(() => initializeApp({"projectId":"simple-crm-aee8f","appId":"1:392961753641:web:216af6b21f8f2f299dd238","storageBucket":"simple-crm-aee8f.appspot.com","apiKey":"AIzaSyCB7fAoWRxrO-VfYrfVRi78CAdDUrp8wHs","authDomain":"simple-crm-aee8f.firebaseapp.com","messagingSenderId":"392961753641"})),
       provideFirestore(() => getFirestore()),
 ],
