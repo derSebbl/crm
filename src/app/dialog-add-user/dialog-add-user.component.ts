@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { User } from '../../models/user.class';
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection } from 'firebase/firestore';
+import { MatDialogRef } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -9,23 +11,23 @@ import { addDoc, collection } from 'firebase/firestore';
   styleUrl: './dialog-add-user.component.scss'
 })
 export class DialogAddUserComponent {
-  
   firestore: Firestore = inject(Firestore);
 
-  constructor() {
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {
 
    }
 
   user= new User();
   birthDate!: Date;
+  loading = false;
 
   saveUser() {
     let acollection = collection(this.firestore, 'users');
     this.user.birthDate = this.birthDate?.getTime() ?? 0;
-    console.log(this.user);
-
+    this.loading = true;
     addDoc(acollection, this.user.toJSON()).then((docRef) => {
-      console.log("user added with ID: ", docRef.id);
+      this.loading = false;
+      this.dialogRef.close();
     }).catch((error) => {
       console.error("Error adding document: ", error);
     });

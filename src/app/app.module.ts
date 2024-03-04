@@ -20,6 +20,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { FormsModule } from '@angular/forms';
     MatNativeDateModule,
     FormsModule,
     FirestoreModule,
+    MatProgressBarModule,
+    MatCardModule,
     provideFirebaseApp(() => initializeApp({"projectId":"simple-crm-aee8f","appId":"1:392961753641:web:216af6b21f8f2f299dd238","storageBucket":"simple-crm-aee8f.appspot.com","apiKey":"AIzaSyCB7fAoWRxrO-VfYrfVRi78CAdDUrp8wHs","authDomain":"simple-crm-aee8f.firebaseapp.com","messagingSenderId":"392961753641"})),
       provideFirestore(() => getFirestore()),
 ],

@@ -3,3 +3,14 @@
     bottom: 56px;
     right: 56px;
 }
+
+.user-table {
+    width: 100%;
+
+    th {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 14px;
+        font-weight: 700;
+        text-align: left;
+    }
+}
