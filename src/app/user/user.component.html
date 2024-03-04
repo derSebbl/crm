@@ -7,16 +7,10 @@
         <th>City</th>
       </tr>
 
-      <tr>
-        <td>SEb</td>
-        <td>seb.mail.de</td>
-        <td>Test</td>
-      </tr>
-
-      <tr>
-        <td>SEb</td>
-        <td>seb.mail.de</td>
-        <td>Test</td>
+      <tr  *ngFor="let user of users$ | async">
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.city}}</td>
       </tr>
       
     </table>
