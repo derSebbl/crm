@@ -53,6 +53,6 @@
 
 </div>
 <mat-dialog-actions>
-  <button mat-button>Cancel</button>
-  <button (click)="saveUser()" mat-button>Save</button>
+  <button [disabled]="loading" (click)="dialogRef.close()" mat-button>Cancel</button>
+  <button [disabled]="loading"  (click)="saveUser()" mat-button>Save</button>
 </mat-dialog-actions>

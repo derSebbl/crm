@@ -22,6 +22,7 @@ export class UserComponent {
   constructor(public dialog: MatDialog) {
     const aCollection = collection(this.firestore, 'users')
     this.users$ = collectionData(aCollection);
+    this.users$ = collectionData(aCollection, {idField: 'id'});
    }
 
   ngOnInit(): void{
