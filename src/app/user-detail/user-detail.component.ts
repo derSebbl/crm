@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class UserDetailComponent {
 
+  userId = '';
+
+  constructor(private route:ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe( paramMap => {
+      this.userId = paramMap.get('id')!;
+  })
+  }
 }
