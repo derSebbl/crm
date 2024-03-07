@@ -23,6 +23,9 @@ import { FormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 
 
 @NgModule({
@@ -31,7 +34,9 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     DashboardComponent,
     UserComponent,
     DialogAddUserComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    DialogEditAddressComponent,
+    DialogEditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     FirestoreModule,
     MatProgressBarModule,
     MatCardModule,
+    MatMenuModule,
     provideFirebaseApp(() => initializeApp({"projectId":"simple-crm-aee8f","appId":"1:392961753641:web:216af6b21f8f2f299dd238","storageBucket":"simple-crm-aee8f.appspot.com","apiKey":"AIzaSyCB7fAoWRxrO-VfYrfVRi78CAdDUrp8wHs","authDomain":"simple-crm-aee8f.firebaseapp.com","messagingSenderId":"392961753641"})),
       provideFirestore(() => getFirestore()),
 ],

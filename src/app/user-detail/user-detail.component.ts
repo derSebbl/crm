@@ -1,8 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Firestore, collection, doc, getDoc } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.class';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -17,7 +20,8 @@ export class UserDetailComponent {
   userId = '';
   user = new User();
 
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe( paramMap => {
@@ -36,5 +40,13 @@ export class UserDetailComponent {
     } else {
       console.log('No such user!');
     }
+  }
+
+  openAdressDialog(){
+    this.dialog.open(DialogEditAddressComponent)
+  }
+
+  editUserDetail(){
+    this.dialog.open(DialogEditUserComponent)
   }
 }
