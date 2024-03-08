@@ -45,10 +45,12 @@ export class UserDetailComponent {
   openAdressDialog(){
     const dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userID = this.userId;
   }
 
   editUserDetail(){
     const dialog = this.dialog.open(DialogEditUserComponent)
     dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userID = this.userId;
   }
 }

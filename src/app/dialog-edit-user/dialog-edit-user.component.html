@@ -33,5 +33,5 @@
 </div>
 <mat-dialog-actions>
   <button [disabled]="loading" (click)="dialogRef.close()" mat-button>Cancel</button>
-  <button [disabled]="loading" mat-button>Save</button>
+  <button [disabled]="loading" (click)="saveChanges()" mat-button>Save</button>
 </mat-dialog-actions>

@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Firestore } from '@angular/fire/firestore';
 import { User } from '../../models/user.class';
+import { collection, doc, updateDoc } from 'firebase/firestore';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-dialog-edit-address',
@@ -10,9 +12,15 @@ import { User } from '../../models/user.class';
 })
 export class DialogEditAddressComponent {
 
+  constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>) {
+
+  }
+  
+
   firestore: Firestore = inject(Firestore);
 
   loading = false;
+  userID:string = '';
   user: User = {
     street: '',
     zipCode: 0,
@@ -26,8 +34,11 @@ export class DialogEditAddressComponent {
     }
   };
 
-  constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>) {
-
-  }
-
+  saveChanges(){
+    this.loading = true;
+    updateDoc(doc(collection(this.firestore, 'users'), this.userID), this.user.toJSON()).then(() => {
+      this.loading = false;
+      this.dialogRef.close();
+    });
+  };
 }
