@@ -18,12 +18,10 @@ export class DialogAddUserComponent {
    }
 
   user= new User();
-  birthDate!: Date;
   loading = false;
 
   saveUser() {
     let acollection = collection(this.firestore, 'users');
-    this.user.birthDate = this.birthDate?.getTime() ?? 0;
     this.loading = true;
     addDoc(acollection, this.user.toJSON()).then((docRef) => {
       this.loading = false;

@@ -28,6 +28,7 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { PetsComponent } from './pets/pets.component';
 import { BillsComponent } from './bills/bills.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { BillsComponent } from './bills/bills.component';
     MatProgressBarModule,
     MatCardModule,
     MatMenuModule,
+    MatSelectModule,
     provideFirebaseApp(() => initializeApp({"projectId":"simple-crm-aee8f","appId":"1:392961753641:web:216af6b21f8f2f299dd238","storageBucket":"simple-crm-aee8f.appspot.com","apiKey":"AIzaSyCB7fAoWRxrO-VfYrfVRi78CAdDUrp8wHs","authDomain":"simple-crm-aee8f.firebaseapp.com","messagingSenderId":"392961753641"})),
       provideFirestore(() => getFirestore()),
 ],
