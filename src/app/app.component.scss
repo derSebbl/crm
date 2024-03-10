@@ -22,14 +22,19 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     padding-left: 16px;
     padding-right: 16px;
-    min-height: 55px;
+    min-height: 77px;
     display: flex;
     align-items: center;
+
+    img {
+        width: 200px;
+        height: 77px
+    }
 }
 
 mat-toolbar {
-    min-height: 56px;
-    height: 56px;
+    min-height: 77px;
+    height: 78px;
 }
 
 .menu-items {
