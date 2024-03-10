@@ -10,8 +10,8 @@ import Chart from 'chart.js/auto';
 })
 export class DashboardComponent {
   chart1: any;
-  customers = [1, 56, 334, 34, 15];
-  months = ['January', 'February', 'March', 'April', 'May'];
+  customers = [1, 56, 334, 34, 15, 23, 45, 67, 78, 89, 90, 100];
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   
   chart2: any;
@@ -54,8 +54,6 @@ export class DashboardComponent {
               display: true,
               text: 'Customers'
             },
-            suggestedMin: -10,
-            suggestedMax: 200
           }
         }
       },
