@@ -1,1 +1,19 @@
-<p>pets works!</p>
+<mat-card>
+    <table class="pets-table">
+
+      <tr>
+        <th>Name</th>
+        <th>E-Mail</th>
+        <th>Pet</th>
+      </tr>
+
+      <tr *ngFor="let user of users$ | async">
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.pet }}</td>
+        <td>{{ user.petInfo }}</td>
+        <td class="icon" (click)="togglePetInfo(user.id)"> <mat-icon>home</mat-icon> </td>
+      </tr>
+      
+    </table>
+</mat-card>

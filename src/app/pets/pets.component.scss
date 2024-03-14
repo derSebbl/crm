@@ -1,0 +1,48 @@
+.pets-table {
+    width: 100%;
+    border-collapse: collapse;
+    tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        height: 48px;
+
+        &:first-child {
+            cursor: unset;
+            &:hover {
+                background-color: unset;
+            }
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        td {
+            height: 32px;
+
+            &:first-child {
+                padding-left: 16px;
+        }
+    }
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+    }
+}
+
+    th {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 14px;
+        font-weight: 700;
+        text-align: left;
+
+        &:first-child {
+            padding-left: 16px;
+        }
+    }
+
+    .icon {
+        cursor: pointer;
+    }
+
+
+}
