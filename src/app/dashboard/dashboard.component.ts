@@ -14,10 +14,12 @@ import { User } from '../../models/user.class';
 export class DashboardComponent {
   chart1: any;
   chart2: any;
+  chart3: any;
   customers = [1, 56, 334, 34, 15, 23, 45, 67, 78, 89, 90, 100];
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   dogCount = 0;
   catCount = 0;
+  petInCare = 0;
   user: User = {
     street: '',
     zipCode: 0,
@@ -34,10 +36,11 @@ export class DashboardComponent {
   
   ngOnInit() {
     this.createChartBills();
+    this.countPetsInCare();
+    this.countPets();
   }
 
   constructor() {
-    this.countPets();
    }
    firestore: Firestore = inject(Firestore);
 
@@ -58,6 +61,18 @@ export class DashboardComponent {
       this.createChartPets();
     });
   }
+
+  countPetsInCare() {
+    const acollection = collection(this.firestore, 'users');
+    collectionData(acollection).subscribe((users: any[]) => {
+      users.forEach(user => {
+        if (user.petInfo === true) {
+          this.petInCare++;
+        }
+      }
+    );
+  });
+}
 
   createChartPets() {
     this.chart2 = new Chart('chart2', {
@@ -127,5 +142,5 @@ export class DashboardComponent {
       },
     });
   }
-}
 
+}

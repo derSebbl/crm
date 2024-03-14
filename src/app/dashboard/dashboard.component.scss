@@ -12,3 +12,15 @@
   width: 50%;
   height: 300px;
 }
+
+.petsInCare {
+  display: flex;
+  height: 150px;
+  width: 200px;
+  align-items: center;
+  justify-content: space-around;
+  >.number {
+    font-size: 40px;
+    font-weight: 700;
+  }
+}
