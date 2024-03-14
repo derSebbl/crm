@@ -62,11 +62,22 @@ export class DashboardComponent {
   createChartPets() {
     this.chart2 = new Chart('chart2', {
       type: 'pie',
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Customer pets'
+          }
+        }},
       data: {
         labels: ['Dogs', 'Cats'],
         datasets: [
           {
-            label: '# of Votes',
+            label: 'list of customer animals',
             data: [this.dogCount, this.catCount],
             borderWidth: 1,
           },
