@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import Chart from 'chart.js/auto';
 import { User } from '../../models/user.class';
 
@@ -13,9 +13,11 @@ import { User } from '../../models/user.class';
 })
 export class DashboardComponent {
   chart1: any;
+  chart2: any;
   customers = [1, 56, 334, 34, 15, 23, 45, 67, 78, 89, 90, 100];
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
+  dogCount = 0;
+  catCount = 0;
   user: User = {
     street: '',
     zipCode: 0,
@@ -30,19 +32,50 @@ export class DashboardComponent {
     }
   };
   
-  chart2: any;
-
-
+  ngOnInit() {
+    this.createChartBills();
+  }
 
   constructor() {
-
+    this.countPets();
    }
+   firestore: Firestore = inject(Firestore);
 
-  firestore: Firestore = inject(Firestore);
 
+ 
 
-  ngOnInit() {
-    
+  countPets() {
+    const acollection = collection(this.firestore, 'users');
+    collectionData(acollection).subscribe((users: any[]) => {
+      users.forEach(user => {
+        if (user.pet == 'Dog') {
+          this.dogCount++;
+        }
+        if (user.pet == 'Cat') {
+          this.catCount++;
+        }
+      });
+      this.createChartPets();
+    });
+  }
+
+  createChartPets() {
+    this.chart2 = new Chart('chart2', {
+      type: 'pie',
+      data: {
+        labels: ['Dogs', 'Cats'],
+        datasets: [
+          {
+            label: '# of Votes',
+            data: [this.dogCount, this.catCount],
+            borderWidth: 1,
+          },
+        ],
+      },
+    });
+  }
+
+  createChartBills() {
     this.chart1 = new Chart('chart1', {
       type: 'line', 
       data: {
@@ -82,20 +115,6 @@ export class DashboardComponent {
         }
       },
     });
-
-    this.chart2 = new Chart('chart2', {
-      type: 'pie',
-      data: {
-        labels: ['Dog', 'Cat'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: [2, 3],
-            borderWidth: 1,
-          },
-        ],
-      },
-    });
   }
-
 }
+
