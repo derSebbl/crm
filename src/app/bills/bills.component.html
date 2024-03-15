@@ -10,7 +10,7 @@
       <tr *ngFor="let user of users$ | async">
         <td>{{ user.firstName }} {{ user.lastName }}</td>
         <td>{{ user.bill }}</td>
-        <td class="icon">
+        <td class="icon" (click)="payBill(user.id)">
             <mat-icon>payments</mat-icon>
         </td>
       </tr>

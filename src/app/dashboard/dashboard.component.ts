@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, getDocs } from '@angular/fire/firestore';
 import Chart from 'chart.js/auto';
 import { User } from '../../models/user.class';
 import { Router } from '@angular/router';
@@ -37,8 +37,8 @@ export class DashboardComponent {
   };
   
   ngOnInit() {
-    this.createChartBills();
     this.countPetsInCare();
+    this.createChartBills();
     this.countPets();
   }
 
@@ -49,7 +49,7 @@ export class DashboardComponent {
 
  
 
-  countPets() {
+   countPets() {
     const acollection = collection(this.firestore, 'users');
     collectionData(acollection).subscribe((users: any[]) => {
       users.forEach(user => {
@@ -60,7 +60,7 @@ export class DashboardComponent {
           this.catCount++;
         }
       });
-      this.createChartPets();
+      this.createChartPets(); 
     });
   }
 
@@ -76,41 +76,68 @@ export class DashboardComponent {
   });
 }
 
-  createChartPets() {
-    this.chart2 = new Chart('chart2', {
-      type: 'pie',
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Customer pets'
-          }
-        }},
-      data: {
-        labels: ['Dogs', 'Cats'],
-        datasets: [
-          {
-            label: 'list of customer animals',
-            data: [this.dogCount, this.catCount],
-            borderWidth: 1,
-          },
-        ],
-      },
-    });
+createChartPets() {
+  const chartElement = document.getElementById('chart2');
+  if (chartElement) {
+  this.chart2 = new Chart('chart2', {
+    type: 'pie',
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Customer pets'
+        }
+      }
+    },
+    data: {
+      labels: ['Dogs', 'Cats'],
+      datasets: [
+        {
+          label: 'list of customer animals',
+          data: [this.dogCount, this.catCount],
+          borderWidth: 1,
+        },
+      ],
+    },
+  });
+}else {
+  console.error('Element with id "chart2" not found');
+}
 }
 
-  createChartBills() {
+  async getSalesVolumeData() {
+    const salesVolumeRef = collection(this.firestore, 'salesVolume');
+    const salesVolumeSnapshot = await getDocs(salesVolumeRef);
+    const salesVolumeObj: { [key: string]: number } = salesVolumeSnapshot.docs.reduce((acc, doc) => {
+      const date = new Date(doc.id).toLocaleDateString();
+      const amount = doc.data()['amount'];
+      acc[date] = (acc[date] || 0) + amount;
+      return acc;
+    }, {} as { [key: string]: number });
+
+    const salesVolumeData = Object.entries(salesVolumeObj)
+      .map(([date, amount]) => ({ date, amount }))
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+    return salesVolumeData;
+  }
+
+  async createChartBills() {
+    const salesVolumeData = await this.getSalesVolumeData();
+    const labels = salesVolumeData.map((data: { date: any; }) => data.date);
+    const data = salesVolumeData.map((data: { amount: any; }) => data.amount);
+
     this.chart1 = new Chart('chart1', {
       type: 'line', 
       data: {
-        labels: this.months,
+        labels: labels,
         datasets: [{
-          label: 'Customers',
-          data: this.customers,
+          label: 'Sales Volume',
+          data: data,
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
           tension: 0.1
@@ -137,7 +164,7 @@ export class DashboardComponent {
             display: true,
             title: {
               display: true,
-              text: 'Customers'
+              text: 'Sales Volume'
             },
           }
         }
