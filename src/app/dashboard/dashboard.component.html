@@ -1,3 +1,17 @@
+<div class="mainContainer">
+<div class="info">
+<div (click)="toPets()">
+    <mat-card class="petsInCare">
+        <mat-card-content>Pets in Care:</mat-card-content>
+        <mat-card-content class="number">{{ petInCare }}</mat-card-content>
+      </mat-card>
+</div>
+<div>
+    <mat-card class="demo-inline-calendar-card">
+        <mat-calendar></mat-calendar>
+    </mat-card>
+</div>
+</div>
 <div class="charts">
     <div>
         <canvas id="chart1"></canvas>
@@ -6,9 +20,5 @@
         <canvas id="chart2"></canvas>
     </div>
 </div>
-<div (click)="toPets()">
-    <mat-card class="petsInCare">
-        <mat-card-content>Pets in Care:</mat-card-content>
-        <mat-card-content class="number">{{ petInCare }}</mat-card-content>
-      </mat-card>
 </div>
+

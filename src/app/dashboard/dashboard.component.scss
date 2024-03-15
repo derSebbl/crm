@@ -1,6 +1,29 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
 .charts {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+  border: solid 3px #693bb8;
+  border-radius: 25px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+  border: solid 3px #693bb8;
+  border-radius: 25px;
 }
 
 #chart1 {
