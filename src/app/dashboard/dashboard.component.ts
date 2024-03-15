@@ -16,11 +16,11 @@ export class DashboardComponent {
   chart1: any;
   chart2: any;
   chart3: any;
-  customers = [1, 56, 334, 34, 15, 23, 45, 67, 78, 89, 90, 100];
-  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+ 
   dogCount = 0;
   catCount = 0;
   petInCare = 0;
+
   user: User = {
     street: '',
     zipCode: 0,
@@ -104,8 +104,6 @@ createChartPets() {
       ],
     },
   });
-}else {
-  console.error('Element with id "chart2" not found');
 }
 }
 
