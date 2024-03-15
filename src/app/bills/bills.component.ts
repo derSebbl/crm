@@ -2,9 +2,10 @@ import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from '../../models/user.class'
-import { Firestore, collectionData, doc, getDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collectionData, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { collection } from 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bills',

@@ -11,8 +11,7 @@
         <td>{{ user.firstName }} {{ user.lastName }}</td>
         <td>{{ user.bill }}</td>
         <td class="icon">
-            <mat-icon *ngIf="user.petInfo; else notPetInfoIcon">check_circle</mat-icon>
-            <ng-template #notPetInfoIcon><mat-icon>radio_button_unchecked</mat-icon></ng-template>
+            <mat-icon>payments</mat-icon>
         </td>
       </tr>
       

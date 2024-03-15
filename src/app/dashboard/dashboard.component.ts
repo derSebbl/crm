@@ -101,7 +101,7 @@ export class DashboardComponent {
         ],
       },
     });
-  }
+}
 
   createChartBills() {
     this.chart1 = new Chart('chart1', {
