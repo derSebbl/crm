@@ -30,7 +30,8 @@ export class DashboardComponent {
     email: '',
     pet: '',
     petInfo: false,
-    toJSON: function (): { firstName: string; lastName: string; email: string; street: string; zipCode: number; city: string; pet: string; petInfo: boolean; } {
+    bills: 0,
+    toJSON: function (): { firstName: string; lastName: string; email: string; street: string; zipCode: number; city: string; pet: string; petInfo: boolean; bills: number;} {
       throw new Error('Function not implemented.');
     }
   };

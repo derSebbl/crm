@@ -1,1 +1,20 @@
-<p>bills works!</p>
+<mat-card>
+    <table class="bills-table">
+
+      <tr>
+        <th>Name</th>
+        <th>bills</th>
+        <th>bezahlt</th>
+      </tr>
+
+      <tr *ngFor="let user of users$ | async">
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.bill }}</td>
+        <td class="icon">
+            <mat-icon *ngIf="user.petInfo; else notPetInfoIcon">check_circle</mat-icon>
+            <ng-template #notPetInfoIcon><mat-icon>radio_button_unchecked</mat-icon></ng-template>
+        </td>
+      </tr>
+      
+    </table>
+</mat-card>

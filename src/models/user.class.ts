@@ -7,6 +7,7 @@ export class User {
     city: string;
     pet: string;
     petInfo: boolean; 
+    bills: number;
     
     constructor(obj?: any) {
         this.firstName = obj ? obj.firstName : '';
@@ -17,6 +18,7 @@ export class User {
         this.city = obj ? obj.city : '';
         this.pet = obj ? obj.pet : '';
         this.petInfo = obj ? obj.petInfo : false;
+        this.bills = obj ? obj.bills : 0;
     }
 
     public toJSON() {
@@ -28,7 +30,8 @@ export class User {
             zipCode: this.zipCode,
             city: this.city,
             pet: this.pet,
-            petInfo: this.petInfo
+            petInfo: this.petInfo,
+            bills: this.bills
         };
     }
 }
