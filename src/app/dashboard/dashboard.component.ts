@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import Chart from 'chart.js/auto';
 import { User } from '../../models/user.class';
+import { Router } from '@angular/router';
 
 
 
@@ -40,7 +41,7 @@ export class DashboardComponent {
     this.countPets();
   }
 
-  constructor() {
+  constructor(private router: Router) {
    }
    firestore: Firestore = inject(Firestore);
 
@@ -143,4 +144,7 @@ export class DashboardComponent {
     });
   }
 
+  toPets() {
+   this.router.navigate(['/pets']); 
+  }
 }
