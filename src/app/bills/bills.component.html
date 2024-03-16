@@ -8,7 +8,7 @@
       </tr>
 
       <ng-container *ngFor="let user of users$ | async">
-        <tr *ngIf="user.bill != 0">
+        <tr *ngIf="user.bill != 0 || user.bill != ''">
           <td>{{ user.firstName }} {{ user.lastName }}</td>
           <td>{{ user.bill }}</td>
           <td class="icon" (click)="payBill(user.id)">

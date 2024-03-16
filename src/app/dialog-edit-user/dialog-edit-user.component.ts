@@ -27,9 +27,11 @@ export class DialogEditUserComponent {
     lastName: '',
     email: '',
     pet: '',
+    petName: '',
+    petAllergens: '',
     petInfo: false,
     bills: 0,
-    toJSON: function (): { firstName: string; lastName: string; email: string; street: string; zipCode: number; city: string;pet: string; petInfo: boolean; bills: number;} {
+    toJSON: function (): { firstName: string; lastName: string; email: string; street: string; zipCode: number; city: string;pet: string; petInfo: boolean; bills: number; petName: string; petAllergens: string;} {
       throw new Error('Function not implemented.');
     }
   };

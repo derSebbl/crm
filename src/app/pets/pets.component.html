@@ -4,12 +4,14 @@
       <tr>
         <th>Name</th>
         <th>Pet</th>
+        <th>Pet Name</th>
         <th>In Care?</th>
       </tr>
 
       <tr *ngFor="let user of users$ | async">
         <td>{{ user.firstName }} {{ user.lastName }}</td>
         <td>{{ user.pet }}</td>
+        <td class="petName" [matTooltip]="'Allergens: ' + user.petAllergens" matTooltipPosition="below">{{ user.petName }}</td>
         <td class="icon" (click)="togglePetInfo(user.id)">
             <mat-icon *ngIf="user.petInfo; else notPetInfoIcon">check_circle</mat-icon>
             <ng-template #notPetInfoIcon><mat-icon>radio_button_unchecked</mat-icon></ng-template>

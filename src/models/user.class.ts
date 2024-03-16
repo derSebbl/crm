@@ -6,6 +6,8 @@ export class User {
     zipCode: number;
     city: string;
     pet: string;
+    petName: string;
+    petAllergens: string;
     petInfo: boolean; 
     bills: number;
     
@@ -17,6 +19,8 @@ export class User {
         this.zipCode = obj ? obj.zipCode : '';
         this.city = obj ? obj.city : '';
         this.pet = obj ? obj.pet : '';
+        this.petName = obj ? obj.petName : '';
+        this.petAllergens = obj ? obj.petAllergens : '';
         this.petInfo = obj ? obj.petInfo : false;
         this.bills = obj ? obj.bills : 0;
     }
@@ -30,6 +34,8 @@ export class User {
             zipCode: this.zipCode,
             city: this.city,
             pet: this.pet,
+            petName: this.petName,
+            petAllergens: this.petAllergens,
             petInfo: this.petInfo,
             bills: this.bills
         };
