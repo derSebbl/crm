@@ -3,7 +3,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Firestore } from '@angular/fire/firestore';
 import { User } from '../../models/user.class';
 import { collection, doc, updateDoc } from 'firebase/firestore';
-import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-dialog-edit-address',
