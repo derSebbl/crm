@@ -7,13 +7,15 @@
         <th>bezahlt</th>
       </tr>
 
-      <tr *ngFor="let user of users$ | async">
-        <td>{{ user.firstName }} {{ user.lastName }}</td>
-        <td>{{ user.bill }}</td>
-        <td class="icon" (click)="payBill(user.id)">
-            <mat-icon>payments</mat-icon>
-        </td>
-      </tr>
+      <ng-container *ngFor="let user of users$ | async">
+        <tr *ngIf="user.bill != 0">
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.bill }}</td>
+          <td class="icon" (click)="payBill(user.id)">
+              <mat-icon>payments</mat-icon>
+          </td>
+        </tr>
+      </ng-container>
       
     </table>
 </mat-card>
