@@ -9,6 +9,7 @@ export class User {
     petName: string;
     petAllergens: string;
     petInfo: boolean; 
+    careDays: number;
     bills: number;
     
     constructor(obj?: any) {
@@ -22,6 +23,7 @@ export class User {
         this.petName = obj ? obj.petName : '';
         this.petAllergens = obj ? obj.petAllergens : '';
         this.petInfo = obj ? obj.petInfo : false;
+        this.careDays = obj ? obj.careDays : 0;
         this.bills = obj ? obj.bills : 0;
     }
 
@@ -37,6 +39,7 @@ export class User {
             petName: this.petName,
             petAllergens: this.petAllergens,
             petInfo: this.petInfo,
+            careDays: this.careDays,
             bills: this.bills
         };
     }
