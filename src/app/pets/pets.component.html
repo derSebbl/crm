@@ -8,14 +8,14 @@
         <th>In Care?</th>
       </tr>
 
-      <tr *ngFor="let user of users$ | async">
+      <tr *ngFor="let user of users$ | async" [routerLink]="['/pets', user.id]">
         <td>{{ user.firstName }} {{ user.lastName }}</td>
         <td>
           <img class="petImg" *ngIf="user.pet == 'Dog'" src="../../assets/img/dog.png">
           <img class="petImg" *ngIf="user.pet == 'Cat'" src="../../assets/img/cat.png">
         </td>
         <td class="petName" [matTooltip]="'Allergens: ' + user.petAllergens" matTooltipPosition="below">{{ user.petName }}</td>
-        <td class="icon" (click)="togglePetInfo(user.id)">
+        <td class="icon">
             <mat-icon *ngIf="user.petInfo; else notPetInfoIcon">check_circle</mat-icon>
             <ng-template #notPetInfoIcon><mat-icon>radio_button_unchecked</mat-icon></ng-template>
         </td>

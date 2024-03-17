@@ -4,6 +4,7 @@
     tr {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         height: 48px;
+        cursor: pointer;
 
         &:first-child {
             cursor: unset;
@@ -42,10 +43,6 @@
 
     .icon {
         cursor: pointer;
-    }
-
-    .petName {
-        cursor: default;
     }
 
     .petImg {
