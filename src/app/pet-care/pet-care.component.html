@@ -1,1 +1,46 @@
-<h2>Care of {{ user.petName }}</h2>
+<h2>
+    Care of {{ user.petName }}
+    <img class="petImg" *ngIf="user.pet == 'Dog'" src="../../assets/img/dog.png">
+    <img class="petImg" *ngIf="user.pet == 'Cat'" src="../../assets/img/cat.png"> 
+</h2>
+<div class="mainContainer">
+
+<div class="cares">
+    <div class="fullCare">
+        Full Care 200$ per Day
+        <mat-form-field>
+            <mat-select [(value)]="selectedfull">
+                <mat-option value="1">1 Day</mat-option>
+                <mat-option value="2">2 Days</mat-option>
+                <mat-option value="3">3 Days</mat-option>
+                <mat-option value="4">4 Days</mat-option>
+                <mat-option value="5">5 Days</mat-option>
+                <mat-option value="6">6 Days</mat-option>
+                <mat-option value="7">7 Days</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <div class="halfCare">
+        Half Care 100$ per Day
+        <mat-form-field>
+            <mat-select [(value)]="selectedhalf">
+                <mat-option value="1">1 Day</mat-option>
+                <mat-option value="2">2 Days</mat-option>
+                <mat-option value="3">3 Days</mat-option>
+                <mat-option value="4">4 Days</mat-option>
+                <mat-option value="5">5 Days</mat-option>
+                <mat-option value="6">6 Days</mat-option>
+                <mat-option value="7">7 Days</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+</div>
+    <div>
+        <p>customer Infos:</p>
+        <p>Customer Name: {{ user.firstName }} {{ user.lastName }}</p>
+        <p>Customer Email: {{ user.email }}</p>
+    </div>
+
+    <button (click)="setBill()">accept</button>
+    <button>cancel</button>
+</div>

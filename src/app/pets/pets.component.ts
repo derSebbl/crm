@@ -33,7 +33,7 @@ export class PetsComponent {
     getDoc(userRef).then((userDoc) => {
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        let currentBill = userData?.['bill'] || 0; 
+        let currentBill = userData?.['bills'] || 0; 
         currentBill = parseInt(currentBill); 
         updateDoc(userRef, {
           bill: currentBill + amount 

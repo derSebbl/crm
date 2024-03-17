@@ -30,6 +30,7 @@ import { PetsComponent } from './pets/pets.component';
 import { BillsComponent } from './bills/bills.component';
 import {MatSelectModule} from '@angular/material/select';
 import { PetCareComponent } from './pet-care/pet-care.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { PetCareComponent } from './pet-care/pet-care.component';
     MatCardModule,
     MatMenuModule,
     MatSelectModule,
+    MatPaginatorModule,
     provideFirebaseApp(() => initializeApp({"projectId":"simple-crm-aee8f","appId":"1:392961753641:web:216af6b21f8f2f299dd238","storageBucket":"simple-crm-aee8f.appspot.com","apiKey":"AIzaSyCB7fAoWRxrO-VfYrfVRi78CAdDUrp8wHs","authDomain":"simple-crm-aee8f.firebaseapp.com","messagingSenderId":"392961753641"})),
       provideFirestore(() => getFirestore()),
 ],
