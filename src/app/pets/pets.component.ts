@@ -26,6 +26,16 @@ export class PetsComponent {
    }
 
   ngOnInit(): void{
+    }
+
+    calculateTimeDifference(timestamp: string): string {
+      const petInfoDate = new Date(timestamp);
+      const currentDate = new Date();
+    
+      const diffInMilliseconds = currentDate.getTime() - petInfoDate.getTime();
+      const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+    
+      return `${diffInDays} Tage`;
+    }
   }
-}
 

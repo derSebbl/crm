@@ -75,10 +75,10 @@ export class PetCareComponent {
 
   setPetInfoTrue() {
     const userRef = doc(this.firestore, 'users', this.userId);
-    const now = Date.now();
+    const future = Date.now() + ((this.selectedfull + this.selectedhalf) * 60 * 60 * 1000)
     updateDoc(userRef, {
       petInfo: true,
-      PetInfoTimestamp: now
+      PetInfoTimestamp: future
     });
   }
 
@@ -88,8 +88,14 @@ export class PetCareComponent {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         const petInfoTimestamp = userData?.['PetInfoTimestamp'];
-        const twoDaysAgo = Date.now() - this.selectedfull + this.selectedhalf * 24 * 60 * 60 * 1000;
-        if (petInfoTimestamp < twoDaysAgo) {
+
+        const petInfoDate = new Date(petInfoTimestamp);
+        petInfoDate.setHours(0, 0, 0, 0);
+
+        const currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0);
+
+        if (+petInfoDate === +currentDate) {
           updateDoc(userRef, {
             petInfo: false
           });
