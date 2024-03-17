@@ -29,6 +29,7 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
 import { PetsComponent } from './pets/pets.component';
 import { BillsComponent } from './bills/bills.component';
 import {MatSelectModule} from '@angular/material/select';
+import { DialogAddPetcareComponent } from './dialog-add-petcare/dialog-add-petcare.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {MatSelectModule} from '@angular/material/select';
     DialogEditAddressComponent,
     DialogEditUserComponent,
     PetsComponent,
-    BillsComponent
+    BillsComponent,
+    DialogAddPetcareComponent
   ],
   imports: [
     BrowserModule,

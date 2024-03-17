@@ -15,7 +15,7 @@
           <img class="petImg" *ngIf="user.pet == 'Cat'" src="../../assets/img/cat.png">
         </td>
         <td class="petName" [matTooltip]="'Allergens: ' + user.petAllergens" matTooltipPosition="below">{{ user.petName }}</td>
-        <td class="icon" (click)="togglePetInfo(user.id)">
+        <td class="icon" (click)="openDialog()">
             <mat-icon *ngIf="user.petInfo; else notPetInfoIcon">check_circle</mat-icon>
             <ng-template #notPetInfoIcon><mat-icon>radio_button_unchecked</mat-icon></ng-template>
         </td>

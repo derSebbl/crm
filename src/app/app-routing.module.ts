@@ -7,12 +7,12 @@ import { PetsComponent } from './pets/pets.component';
 import { BillsComponent } from './bills/bills.component';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'user', component: UserComponent},
+  {path: '', component: DashboardComponent },
+  {path: 'dashboard', component: DashboardComponent },
+  {path: 'user', component: UserComponent },
   {path: 'user/:id', component: UserDetailComponent },
-  {path: 'pets', component: PetsComponent},
-  {path: 'bills', component: BillsComponent}
+  {path: 'pets', component: PetsComponent },
+  {path: 'bills', component: BillsComponent },
 ];
 
 @NgModule({

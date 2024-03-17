@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Firestore, collectionData, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { collection } from 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { DialogAddPetcareComponent } from '../dialog-add-petcare/dialog-add-petcare.component';
 
 
 @Component({
@@ -14,6 +15,8 @@ export class PetsComponent {
   firestore: Firestore = inject(Firestore);
   users$!: Observable<any[]>;
   user: any;
+  
+  
 
 
   constructor(public dialog: MatDialog) {
@@ -58,4 +61,8 @@ export class PetsComponent {
       }
     });
   } 
+
+  openDialog() {
+    this.dialog.open(DialogAddPetcareComponent);
+  }
 }
