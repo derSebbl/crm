@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Firestore, collectionData, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { collection } from 'firebase/firestore';
 import { Observable } from 'rxjs';
-import { DialogAddPetcareComponent } from '../dialog-add-petcare/dialog-add-petcare.component';
+
 
 
 @Component({
@@ -61,8 +61,4 @@ export class PetsComponent {
       }
     });
   } 
-
-  openDialog() {
-    this.dialog.open(DialogAddPetcareComponent);
-  }
 }

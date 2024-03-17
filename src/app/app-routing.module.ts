@@ -5,6 +5,7 @@ import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PetsComponent } from './pets/pets.component';
 import { BillsComponent } from './bills/bills.component';
+import { PetCareComponent } from './pet-care/pet-care.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'user/:id', component: UserDetailComponent },
   {path: 'pets', component: PetsComponent },
   {path: 'bills', component: BillsComponent },
+  {path: 'pets/:id', component: PetCareComponent },
 ];
 
 @NgModule({

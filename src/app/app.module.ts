@@ -29,7 +29,7 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
 import { PetsComponent } from './pets/pets.component';
 import { BillsComponent } from './bills/bills.component';
 import {MatSelectModule} from '@angular/material/select';
-import { DialogAddPetcareComponent } from './dialog-add-petcare/dialog-add-petcare.component';
+import { PetCareComponent } from './pet-care/pet-care.component';
 
 
 @NgModule({
@@ -43,7 +43,7 @@ import { DialogAddPetcareComponent } from './dialog-add-petcare/dialog-add-petca
     DialogEditUserComponent,
     PetsComponent,
     BillsComponent,
-    DialogAddPetcareComponent
+    PetCareComponent
   ],
   imports: [
     BrowserModule,
