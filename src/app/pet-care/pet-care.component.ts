@@ -52,7 +52,7 @@ export class PetCareComponent {
     getDoc(userRef).then((userDoc) => {
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        let currentBill = userData?.['bills'] || 0; 
+        let currentBill = userData?.['bill'] || 0; 
         currentBill = parseInt(currentBill); 
         updateDoc(userRef, {
           bill: currentBill + valueFull*200 + valueHalf*100
