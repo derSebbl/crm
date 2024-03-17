@@ -40,7 +40,6 @@
         <p>Customer Name: {{ user.firstName }} {{ user.lastName }}</p>
         <p>Customer Email: {{ user.email }}</p>
     </div>
-
     <button (click)="setBill()">accept</button>
-    <button>cancel</button>
+    <button (click)="clearFields()">cancel</button>
 </div>

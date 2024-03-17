@@ -6,6 +6,7 @@
         <th>Pet</th>
         <th>Pet Name</th>
         <th>In Care?</th>
+        <th>Time Remaining</th>
       </tr>
 
       <tr *ngFor="let user of users$ | async" [routerLink]="['/pets', user.id]">

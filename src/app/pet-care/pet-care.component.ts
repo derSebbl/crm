@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { User } from '../../models/user.class';
 import { Firestore, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, interval } from 'rxjs';
 
 @Component({
   selector: 'app-pet-care',
@@ -23,12 +23,14 @@ export class PetCareComponent {
   constructor(
     private route:ActivatedRoute,
     public dialog: MatDialog,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe( paramMap => {
       this.userId = paramMap.get('id')!;
       this.getUser();
+      interval(60 * 60 * 1000).subscribe(() => this.checkPetInfo());
   })
   }
 
@@ -57,6 +59,44 @@ export class PetCareComponent {
         });
       }
     })
+    this.clearFields();
+    this.setPetInfoTrue();
   }
+
+  clearFields(){
+    this.selectedhalf = '';
+    this.selectedfull = '';
+    this.backToPets();
+  }
+
+  backToPets(){
+    this.router.navigate(['/pets']);
+  }
+
+  setPetInfoTrue() {
+    const userRef = doc(this.firestore, 'users', this.userId);
+    const now = Date.now();
+    updateDoc(userRef, {
+      petInfo: true,
+      PetInfoTimestamp: now
+    });
+  }
+
+  checkPetInfo() {
+    const userRef = doc(this.firestore, 'users', this.userId);
+    getDoc(userRef).then((userDoc) => {
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const petInfoTimestamp = userData?.['PetInfoTimestamp'];
+        const twoDaysAgo = Date.now() - this.selectedfull + this.selectedhalf * 24 * 60 * 60 * 1000;
+        if (petInfoTimestamp < twoDaysAgo) {
+          updateDoc(userRef, {
+            petInfo: false
+          });
+        }
+      }
+    });
+  }
+
 }
 

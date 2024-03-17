@@ -27,38 +27,5 @@ export class PetsComponent {
 
   ngOnInit(): void{
   }
-
-  updateBill(userId: string, amount: number) {
-    const userRef = doc(this.firestore, 'users', userId);
-    getDoc(userRef).then((userDoc) => {
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        let currentBill = userData?.['bills'] || 0; 
-        currentBill = parseInt(currentBill); 
-        updateDoc(userRef, {
-          bill: currentBill + amount 
-        });
-      }
-    });
-  }
-
-  togglePetInfo(userId: string) {
-    const userRef = doc(this.firestore, 'users', userId);
-    getDoc(userRef).then((userDoc) => {
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        const currentPetInfo = userData?.['petInfo'];
-        if (!currentPetInfo) {
-          updateDoc(userRef, {
-            petInfo: !currentPetInfo
-          });
-          this.updateBill(userId, 200); 
-        } else {
-          updateDoc(userRef, {
-            petInfo: !currentPetInfo
-          });
-        }
-      }
-    });
-  } 
 }
+
