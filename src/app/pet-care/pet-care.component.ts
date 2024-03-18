@@ -59,8 +59,8 @@ export class PetCareComponent {
         });
       }
     })
-    this.clearFields();
     this.setPetInfoTrue();
+    this.clearFields();
   }
 
   clearFields(){
@@ -74,8 +74,11 @@ export class PetCareComponent {
   }
 
   setPetInfoTrue() {
+    const selectedFullNumber = parseInt(this.selectedfull) || 0;
+    const selectedHalfNumber = parseInt(this.selectedhalf) || 0;  
     const userRef = doc(this.firestore, 'users', this.userId);
-    const future = Date.now() + ((this.selectedfull + this.selectedhalf) * 60 * 60 * 1000)
+    const future = Date.now() + ((selectedFullNumber + selectedHalfNumber) * 60 * 60 * 1000);
+    
     updateDoc(userRef, {
       petInfo: true,
       PetInfoTimestamp: future
@@ -88,14 +91,14 @@ export class PetCareComponent {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         const petInfoTimestamp = userData?.['PetInfoTimestamp'];
-
+  
         const petInfoDate = new Date(petInfoTimestamp);
         petInfoDate.setHours(0, 0, 0, 0);
-
+  
         const currentDate = new Date();
         currentDate.setHours(0, 0, 0, 0);
-
-        if (+petInfoDate === +currentDate) {
+  
+        if (petInfoDate.getTime() === currentDate.getTime()) {
           updateDoc(userRef, {
             petInfo: false
           });

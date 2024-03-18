@@ -29,13 +29,14 @@ export class PetsComponent {
     }
 
     calculateTimeDifference(timestamp: string): string {
-      const petInfoDate = new Date(timestamp);
+      const petInfoDate = new Date(parseInt(timestamp));
       const currentDate = new Date();
-    
-      const diffInMilliseconds = currentDate.getTime() - petInfoDate.getTime();
-      const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
-    
-      return `${diffInDays} Tage`;
+      const remainingTimeInMilliseconds = petInfoDate.getTime() - currentDate.getTime();
+      const remainingDays = Math.ceil(remainingTimeInMilliseconds / (1000 * 60 * 60 * 24));
+      if (isNaN(remainingDays) || remainingDays === 0) {
+        return '';
+      } else {
+      return `${remainingDays} Day(s) remaining`;
     }
   }
-
+}
